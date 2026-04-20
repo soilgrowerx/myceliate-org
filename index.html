@@ -4,11 +4,271 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mycelial Brain MCP</title>
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional styles for new sections */
+        .world-model-section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .section-label {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(100, 255, 218, 0.08);
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-mono);
+        }
+        .section-intro {
+            max-width: 700px;
+        }
+        .arch-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 3rem 0;
+            font-size: 0.95rem;
+        }
+        .arch-table th {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            background: rgba(100, 255, 218, 0.07);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .arch-table td {
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(100, 255, 218, 0.08);
+            color: var(--text-secondary);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .arch-table tr:hover td {
+            background: rgba(100, 255, 218, 0.03);
+        }
+        .arch-table td:first-child {
+            color: #fff;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .failure-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(255, 90, 90, 0.1);
+            border: 1px solid rgba(255, 90, 90, 0.3);
+            border-radius: 4px;
+            color: #ff8a8a;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            margin-bottom: 0.5rem;
+        }
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .protocol-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .protocol-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+        .protocol-card h4 {
+            color: #fff;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        .protocol-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        .category-tag {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        .tag-act {
+            background: rgba(100, 255, 218, 0.12);
+            color: var(--accent-color);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+        .tag-interpret {
+            background: rgba(255, 190, 50, 0.1);
+            color: #ffbe32;
+            border: 1px solid rgba(255, 190, 50, 0.3);
+        }
+        .outcome-flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        .flow-step {
+            padding: 0.8rem 1.4rem;
+            background: rgba(100, 255, 218, 0.07);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: #fff;
+        }
+        .flow-arrow {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+        .moat-box {
+            background: linear-gradient(135deg, rgba(100,255,218,0.06), rgba(10,114,255,0.04));
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .moat-box h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .moat-box p {
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            font-size: 1rem;
+        }
+        .moat-box .accent {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+        .tools-section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .tool-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        .tool-card:hover {
+            border-color: var(--accent-color);
+        }
+        .tool-header {
+            padding: 1.5rem 2rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .tool-name {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 0.4rem;
+        }
+        .tool-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin: 0;
+            max-width: 100%;
+        }
+        .tool-body pre {
+            padding: 1.5rem 2rem;
+            font-size: 0.82rem;
+            margin: 0;
+            background: #0a0f18;
+        }
+        .fidelity-stack {
+            list-style: none;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .fidelity-stack li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .fidelity-stack li span.rank {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            min-width: 24px;
+        }
+        .fidelity-stack li span.signal {
+            color: #fff;
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        @media (max-width: 700px) {
+            .arch-table { font-size: 0.82rem; }
+            .arch-table th, .arch-table td { padding: 0.8rem 1rem; }
+            .outcome-flow { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
     <div class="bg-mesh"></div>
@@ -21,7 +281,10 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent-color)"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 Mycelial<span>Brain</span>
             </a>
-            <a href="https://github.com/soilgrowerx/mycelial-brain-mcp" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">View on GitHub</a>
+            <div class="nav-links">
+                <a href="https://myceliate.cv" class="nav-link">myceliate.cv →</a>
+                <a href="https://github.com/soilgrowerx/mycelial-brain-mcp" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">View on GitHub</a>
+            </div>
         </header>
 
         <!-- Hero -->
@@ -29,10 +292,11 @@
             <div class="badge">Model Context Protocol Server</div>
             <h1>Persistent Memory for<br>Agentic Ecosystems</h1>
             <p>Mycelial Brain is an open-source, decentralized memory ledger built on the STIM Protocol. It provides a standardized MCP interface for autonomous AI agents to share, search, and synchronize context over Google Cloud Storage.</p>
-            
+
             <div class="cta-group">
-                <a href="#quickstart" class="btn btn-primary">Quickstart Guidelines</a>
-                <a href="#stim" class="btn btn-secondary">Read STIM Specs</a>
+                <a href="#quickstart" class="btn btn-primary">Quickstart</a>
+                <a href="#world-model" class="btn btn-secondary">Architecture</a>
+                <a href="#stim" class="btn btn-secondary">STIM Protocol</a>
             </div>
 
             <!-- Terminal Window -->
@@ -48,14 +312,14 @@ const mcpPayload = {
   method: "tools/call",
   params: {
     name: "<span style="color: var(--accent-color);">brain_search</span>",
-    arguments: { 
-      query: "architecture docs", 
-      limit: 5 
+    arguments: {
+      query: "architecture docs",
+      limit: 5
     }
   }
 };
 
-<span style="color: #94a3b8;">// Fetch utilizing advanced token matching & tag taxonomy</span>
+<span style="color: #94a3b8;">// Fetch using token matching & tag taxonomy scoring</span>
 const response = await fetch(MYCELIAL_BRAIN_URL, {
   method: 'POST',
   body: JSON.stringify(mcpPayload)
@@ -63,54 +327,309 @@ const response = await fetch(MYCELIAL_BRAIN_URL, {
             </div>
         </section>
 
-        <!-- Features Grid -->
+        <!-- Core Features -->
         <section class="features">
             <div class="feature-card">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                 <h3>GCS Persistence</h3>
-                <p>Stores raw operational documents seamlessly across Google Cloud Storage, abstracting away infra logic. No database needed—pure cloud-native object structures.</p>
+                <p>Stores raw operational documents seamlessly across Google Cloud Storage. No database needed — pure cloud-native object structures with full version history.</p>
             </div>
-            
+
             <div class="feature-card">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                 <h3>Tokenized Search</h3>
-                <p>Native query splitting and multi-layered scoring algorithms prioritize both exact tag taxonomy constraints and internal string content matrices.</p>
+                <p>Multi-layered scoring algorithms prioritize exact tag taxonomy constraints (3 pts) and internal content matches (2 pts), ranked by descending relevance.</p>
             </div>
 
             <div class="feature-card">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                 <h3>STIM Validated</h3>
-                <p>Engineered expressly for Stasis Through Inferred Memory (STIM) environments. Ensures your agent pipelines don't overwrite identity but accumulate chronological history.</p>
+                <p>Engineered for Stasis Through Inferred Memory environments. Agent pipelines accumulate chronological history rather than overwriting identity state.</p>
             </div>
         </section>
 
-        <!-- Deep Architecture -->
+        <!-- World Model Architecture -->
+        <section class="world-model-section" id="world-model">
+            <div class="section-intro">
+                <div class="section-label">Architecture</div>
+                <h2>World Model Design</h2>
+                <p>Most memory systems pick one architecture and inherit its failure mode. Mycelial Brain runs all three in parallel — the failure modes cancel each other out when the Interpretive Boundary is enforced.</p>
+            </div>
+
+            <table class="arch-table">
+                <thead>
+                    <tr>
+                        <th>Architecture</th>
+                        <th>Mechanism</th>
+                        <th>Primary Failure Mode</th>
+                        <th>Our Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vector Database</td>
+                        <td>Embed data sources; retrieve via semantic similarity</td>
+                        <td>
+                            <div class="failure-tag">Ranking as Reality</div><br>
+                            Users act on surfaced results without realizing ranking is an editorial choice
+                        </td>
+                        <td>Tag-based deprecation, staleness flags, HYPOTHESIS labeling for low-score results</td>
+                    </tr>
+                    <tr>
+                        <td>Structured Ontology</td>
+                        <td>Explicit objects, relationships, and actions</td>
+                        <td>
+                            <div class="failure-tag">Blindness to Emergence</div><br>
+                            System is silent on any relationship not pre-defined in schema
+                        </td>
+                        <td>Earned Structure — schema grows from reality, not imposed on it via <code style="color:var(--accent-color);font-size:0.85em">promote_to_ontology()</code></td>
+                    </tr>
+                    <tr>
+                        <td>Signal Fidelity</td>
+                        <td>High-fidelity data exhaust (transactions, commits, telemetry)</td>
+                        <td>
+                            <div class="failure-tag">Authoritative Illusion</div><br>
+                            Clean input creates false sense of high judgment quality at the output layer
+                        </td>
+                        <td>Interpretive Boundary — all signal-derived claims labeled HYPOTHESIS until outcome-encoded</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Invisible Failure Warning -->
+            <div class="moat-box" style="background: rgba(255,90,90,0.04); border-color: rgba(255,90,90,0.2); text-align:left;">
+                <div class="section-label" style="background:rgba(255,90,90,0.1); color:#ff8a8a; border-color:rgba(255,90,90,0.3);">Critical Risk</div>
+                <h3 style="color:#fff; font-size:1.3rem; margin-bottom:0.8rem;">Invisible Failure</h3>
+                <p style="max-width:100%;">Unlike loud failures (crashes, obvious errors), World Model failures are silent. The system degrades gradually and presents findings with "calm, structured confidence" — masking data drift, logic errors, or stale sources. The answers still sound good.</p>
+                <p style="max-width:100%; margin:0;">Prevention: every output carries a confidence classification, staleness tagging flags docs older than 90 days, and outcome encoding marks unverified claims as hypotheses — never facts.</p>
+            </div>
+        </section>
+
+        <!-- Interpretive Boundary -->
+        <section class="world-model-section" style="padding-top:3rem;">
+            <div class="section-intro">
+                <div class="section-label">Protocol</div>
+                <h2>Interpretive Boundary</h2>
+                <p>Every output must be classified. Presenting high-confidence facts and low-confidence inferences at the same salience level is a fundamental architectural failure.</p>
+            </div>
+
+            <div class="protocol-grid">
+                <div class="protocol-card">
+                    <div class="category-tag tag-act">ACT ON THIS</div>
+                    <h4>Verified Facts</h4>
+                    <p>Hard facts from structured ontology, outcome-encoded nodes, or high-fidelity signal (GitHub commits, calendar events, financial transactions). Retrieval score ≥ 7.</p>
+                    <pre style="background:#0a0f18; border-radius:8px; padding:1rem; margin-top:1rem; font-size:0.78rem; color:#e2e8f0; overflow-x:auto;">"Fact: Contract signed. Value $31,800. Date: 2026-03-16."
+"Fact: First customer onboarded. Date: 2026-03-15."</pre>
+                </div>
+
+                <div class="protocol-card">
+                    <div class="category-tag tag-interpret">INTERPRET FIRST</div>
+                    <h4>Inferred Hypotheses</h4>
+                    <p>Outputs involving judgment calls — trends that might be noise, correlations that may not be causal, or low-score retrievals (score &lt; 4). Never stated as fact.</p>
+                    <pre style="background:#0a0f18; border-radius:8px; padding:1rem; margin-top:1rem; font-size:0.78rem; color:#e2e8f0; overflow-x:auto;">"Based on recent notes, it appears you may be
+pivoting toward AI architecture. Confirm before
+planning around this."</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outcome Encoding -->
+        <section class="world-model-section" style="padding-top:3rem;">
+            <div class="section-intro">
+                <div class="section-label">Feedback Loop</div>
+                <h2>Outcome Encoding</h2>
+                <p>What separates a living world model from a static archive. Three data points required per node — without the third, the system stagnates.</p>
+            </div>
+
+            <div class="outcome-flow">
+                <div class="flow-step">1. What happened</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">2. What was done</div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">3. The resulting outcome</div>
+            </div>
+
+            <div class="tools-grid" style="margin-top:2rem;">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">log_outcome()</div>
+                        <p class="tool-desc">Encode the result of any action. Attaches outcome data to the referenced document node and tags it for downstream pattern detection.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code><span style="color:#94a3b8;">// Encode a real-world result</span>
+{
+  action_doc: <span style="color:var(--accent-color);">"doc-27"</span>,
+  action_summary: <span style="color:var(--accent-color);">"Sent demo to James Green"</span>,
+  outcome: <span style="color:var(--accent-color);">"James signed up as first customer"</span>,
+  outcome_type: <span style="color:var(--accent-color);">"success"</span>,
+  signal_fidelity: <span style="color:var(--accent-color);">"high"</span>,
+  date: <span style="color:var(--accent-color);">"2026-03-15"</span>
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">promote_to_ontology()</div>
+                        <p class="tool-desc">When 5+ docs share a tag cluster with ≥3 successful outcomes, the system flags the pattern for confirmation and promotes it to a verified skill node.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code><span style="color:#94a3b8;">// Earned structure — schema grows from reality</span>
+{
+  trigger: <span style="color:var(--accent-color);">"5+ docs tagged miyawaki"</span>,
+  outcome_type: <span style="color:var(--accent-color);">"success"</span>,
+  count: <span style="color:var(--accent-color);">8</span>,
+  proposed_node: <span style="color:var(--accent-color);">"Miyawaki Installation"</span>,
+  status: <span style="color:var(--accent-color);">"awaiting_confirmation"</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signal Fidelity Stack -->
+            <div style="margin-top:3rem;">
+                <h3 style="color:#fff; font-size:1.2rem; margin-bottom:0.5rem;">Signal Fidelity Stack</h3>
+                <p style="font-size:0.95rem;">Not all inputs carry equal weight. The system scores claims accordingly.</p>
+                <ul class="fidelity-stack">
+                    <li><span class="rank">01</span><span class="signal">Financial transactions</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-color);">HIGH</span></li>
+                    <li><span class="rank">02</span><span class="signal">GitHub commits</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:var(--accent-color);">HIGH</span></li>
+                    <li><span class="rank">03</span><span class="signal">Calendar events</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:#ffbe32);">MED</span></li>
+                    <li><span class="rank">04</span><span class="signal">Outcome-encoded brain docs</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:#ffbe32;">MED</span></li>
+                    <li><span class="rank">05</span><span class="signal">Voice notes / Telegram captures</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:#94a3b8;">LOW</span></li>
+                    <li><span class="rank">06</span><span class="signal">Slack messages / Google Docs</span><span style="margin-left:auto;font-family:var(--font-mono);font-size:0.78rem;color:#94a3b8;">LOW</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- MCP Tools Reference -->
+        <section class="tools-section" id="tools">
+            <div class="section-intro">
+                <div class="section-label">API Reference</div>
+                <h2>MCP Tool Suite</h2>
+                <p>All tools speak JSON-RPC 2.0. Compatible with any MCP client in Go, TypeScript, Python, or any language with HTTP support.</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">brain_write</div>
+                        <p class="tool-desc">Insert new chronological intelligence into the graph. Appends — never overwrites.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code>{
+  method: <span style="color:var(--accent-color);">"tools/call"</span>,
+  params: {
+    name: <span style="color:var(--accent-color);">"brain_write"</span>,
+    arguments: {
+      path: <span style="color:var(--accent-color);">"doc-42"</span>,
+      content: <span style="color:var(--accent-color);">"..."</span>,
+      tags: <span style="color:var(--accent-color);">["project", "outcome"]</span>
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">brain_search</div>
+                        <p class="tool-desc">Fetch documents scored by token matching. Tags score 3 pts, content matches score 2 pts.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code>{
+  method: <span style="color:var(--accent-color);">"tools/call"</span>,
+  params: {
+    name: <span style="color:var(--accent-color);">"brain_search"</span>,
+    arguments: {
+      query: <span style="color:var(--accent-color);">"soil treatment outcomes"</span>,
+      limit: <span style="color:var(--accent-color);">5</span>
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">brain_read</div>
+                        <p class="tool-desc">Directly stream a targeted document by path. Bypasses search inference entirely.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code>{
+  method: <span style="color:var(--accent-color);">"tools/call"</span>,
+  params: {
+    name: <span style="color:var(--accent-color);">"brain_read"</span>,
+    arguments: {
+      path: <span style="color:var(--accent-color);">"doc-112"</span>
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <div class="tool-name">brain_list</div>
+                        <p class="tool-desc">Compile the full document index. Use for offline ingestion, audits, or bulk operations.</p>
+                    </div>
+                    <div class="tool-body">
+                        <pre><code>{
+  method: <span style="color:var(--accent-color);">"tools/call"</span>,
+  params: {
+    name: <span style="color:var(--accent-color);">"brain_list"</span>,
+    arguments: {}
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STIM Protocol -->
         <section class="stim-section" id="stim">
+            <div class="section-intro">
+                <div class="section-label">Foundation</div>
+            </div>
             <div class="architecture-grid">
                 <div>
                     <h2>The STIM Protocol</h2>
-                    <p>The "Stasis Through Inferred Memory" (STIM) protocol enforces a strict ruleset for AI personas. Instead of modifying core instructions, agents build dynamic identity by retrieving relevant situational context from the Mycelial Brain.</p>
-                    <p style="margin-top: 1rem; color: #fff;"><strong>Core Capabilities:</strong></p>
-                    <ul style="list-style: none; color: var(--text-secondary); margin-top: 1rem; display: flex; flex-direction: column; gap: 0.8rem;">
-                        <li><strong style="color: var(--accent-color);">brain_write</strong>: Insert new chronological intelligence into the graph.</li>
-                        <li><strong style="color: var(--accent-color);">brain_search</strong>: Fetch documents scored by rigorous query token rules.</li>
-                        <li><strong style="color: var(--accent-color);">brain_read</strong>: Directly stream targeted assets bypassing search inference.</li>
-                        <li><strong style="color: var(--accent-color);">brain_list</strong>: Compile the index for offline ingestion vectors.</li>
-                    </ul>
+                    <p>Stasis Through Inferred Memory — a nature-grounded AI alignment framework. Instead of modifying core instructions, agents build dynamic identity by retrieving relevant situational context from the Mycelial Brain.</p>
+                    <p>Seven axioms derived from biological systems. Physics-grounded. Substrate-level. The same principles that govern mycelial networks govern agent memory.</p>
+                    <a href="https://github.com/soilgrowerx/stim-core" style="color:var(--accent-color); text-decoration:none; font-family:var(--font-mono); font-size:0.9rem; display:inline-block; margin-top:0.5rem;">Read the white paper →</a>
                 </div>
-                
+
                 <div class="feature-card" style="background: rgba(0,0,0,0.4); padding: 2rem;">
-                    <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Native Integration</h3>
-                    <p style="font-size: 0.95rem;">Compatible with any client that speaks JSON-RPC 2.0. Whether you are building in Go, TypeScript, or Python, the Brain serves as your central repository.</p>
-                    <a href="https://github.com/soilgrowerx/mycelial-brain-mcp" style="color: var(--accent-color); text-decoration: none; font-family: var(--font-mono); font-size: 0.9rem; margin-top: 1rem; display: inline-block;">Explore the repository →</a>
+                    <h3 style="margin-bottom: 1.2rem; font-size: 1.1rem; color:#fff;">Core Principles</h3>
+                    <ul style="list-style: none; color: var(--text-secondary); display: flex; flex-direction: column; gap: 1rem;">
+                        <li><strong style="color: var(--accent-color);">Accumulate, never overwrite</strong> — chronological history is sacred</li>
+                        <li><strong style="color: var(--accent-color);">Infer from context</strong> — retrieve situational state before acting</li>
+                        <li><strong style="color: var(--accent-color);">Earn structure</strong> — schema emerges from proven patterns, not assumptions</li>
+                        <li><strong style="color: var(--accent-color);">Encode outcomes</strong> — actions without results are incomplete data</li>
+                        <li><strong style="color: var(--accent-color);">Label uncertainty</strong> — hypothesis and fact are never equal</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
+        <!-- Time Moat -->
+        <div class="moat-box" style="margin-bottom:6rem;">
+            <div class="section-label" style="margin-bottom:1.5rem;">The Compounding Advantage</div>
+            <h3>Architecture can be copied.<br>Accumulated reality cannot.</h3>
+            <p>Anyone can deploy this MCP server tomorrow. What they cannot replicate: months of outcome-encoded loops, high-fidelity data exhaust, and verified operational telemetry already running in your system.</p>
+            <p class="accent">Every day the loop runs, the moat deepens.</p>
+            <a href="https://myceliate.cv" class="btn btn-primary" style="margin-top:1rem; display:inline-block;">See it in action →</a>
+        </div>
+
         <footer>
-            <p>Mycelial Brain MCP. Crafted for Sovereign Agentic Operations.</p>
+            <div class="footer-links">
+                <a href="https://github.com/soilgrowerx/mycelial-brain-mcp">GitHub</a>
+                <a href="https://github.com/soilgrowerx/stim-core">STIM Protocol</a>
+                <a href="https://myceliate.cv">myceliate.cv</a>
+                <a href="#world-model">Architecture</a>
+                <a href="#tools">API Reference</a>
+            </div>
+            <p>Mycelial Brain MCP — Crafted for Sovereign Agentic Operations.</p>
         </footer>
     </div>
 </body>
 </html>
-<!-- updated Mon Apr 20 13:31:51 CDT 2026 -->
