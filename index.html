@@ -291,7 +291,7 @@
         <section class="hero">
             <div class="badge">Model Context Protocol Server</div>
             <h1>Persistent Memory for<br>Agentic Ecosystems</h1>
-            <p>Mycelial Brain is an open-source, decentralized memory ledger built on the STIM Protocol. It provides a standardized MCP interface for autonomous AI agents to share, search, and synchronize context over Google Cloud Storage.</p>
+            <p>Mycelial Brain is an open-source, decentralized memory ledger built on the STIM Protocol. It provides a standardized MCP interface for autonomous AI agents to share, search, and synchronize context over any object storage backend.</p>
 
             <div class="cta-group">
                 <a href="#quickstart" class="btn btn-primary">Quickstart</a>
@@ -331,8 +331,8 @@ const response = await fetch(MYCELIAL_BRAIN_URL, {
         <section class="features">
             <div class="feature-card">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
-                <h3>GCS Persistence</h3>
-                <p>Stores raw operational documents seamlessly across Google Cloud Storage. No database needed — pure cloud-native object structures with full version history.</p>
+                <h3>Storage Agnostic</h3>
+                <p>Stores raw operational documents across any S3-compatible backend — GCS, AWS S3, Cloudflare R2, MinIO, or local filesystem. No database needed — pure object storage with full version history.</p>
             </div>
 
             <div class="feature-card">
@@ -623,7 +623,7 @@ planning around this."</pre>
         <footer>
             <div class="footer-links">
                 <a href="https://github.com/soilgrowerx/mycelial-brain">GitHub</a>
-                <a href="https://github.com/STIM-Protocol/stim-core">STIM Protocol</a>
+                <a href="https://github.com/STIM-Protocol">STIM Protocol</a>
                 <a href="https://myceliate.cv">myceliate.cv</a>
                 <a href="#world-model">Architecture</a>
                 <a href="#tools">API Reference</a>
