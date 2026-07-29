@@ -57,10 +57,17 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
+        .tier-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
         .tier-table {
             width: 100%;
+            min-width: 520px;
             border-collapse: collapse;
-            margin: 2rem 0;
             font-size: 0.9rem;
         }
         .tier-table th {
@@ -207,6 +214,7 @@
             color: var(--text-secondary);
             white-space: pre;
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
         }
         .insight-callout {
             background: rgba(100,255,218,0.05);
@@ -437,7 +445,7 @@
             <h2 style="margin-bottom:1rem;">Attestation Architecture</h2>
             <p style="color:var(--text-secondary);margin-bottom:2rem;">STIM produces a Certificate of Alignment (CoA) — a machine-readable, physics-anchored proof of agent behavior compliance. Three attestation tiers with a clear upgrade path.</p>
 
-            <table class="tier-table">
+            <div class="tier-table-wrap"><table class="tier-table">
                 <thead>
                     <tr>
                         <th>Tier</th>
@@ -466,7 +474,7 @@
                         <td>Maximum</td>
                     </tr>
                 </tbody>
-            </table>
+            </table></div>
         </section>
 
         <hr class="section-divider">
