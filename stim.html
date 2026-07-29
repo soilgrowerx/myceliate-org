@@ -150,6 +150,74 @@
             flex-shrink: 0;
             margin-top: 0.1rem;
         }
+        .proof-card {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(100,255,218,0.1);
+            border-radius: 8px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        .proof-card:hover {
+            border-color: rgba(100,255,218,0.3);
+        }
+        .proof-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--accent-color);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .proof-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+        .proof-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+        .proof-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        .metric-chip {
+            background: rgba(100,255,218,0.08);
+            border: 1px solid rgba(100,255,218,0.15);
+            border-radius: 4px;
+            padding: 0.35rem 0.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-color);
+        }
+        .osaa-stack {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid rgba(100,255,218,0.15);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .insight-callout {
+            background: rgba(100,255,218,0.05);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -256,6 +324,113 @@
 
         <hr class="section-divider">
 
+        <!-- OSAA Positioning -->
+        <section style="margin-bottom:5rem;">
+            <div class="section-label">The Alliance</div>
+            <h2 style="margin-bottom:1.5rem;">STIM and the Open Secure AI Alliance</h2>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">The Open Secure AI Alliance (OSAA), launched July 2026 under the Linux Foundation, is building an open defense stack for AI agents — identity, isolation, safe model formats, multi-model scanning, and secure coding workflows. Founding members include NVIDIA, Microsoft, Hugging Face, IBM, CrowdStrike, Palantir, Cisco, and 40+ others.</p>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Every OSAA contribution answers: <em>Who are you, and are you carrying anything dangerous?</em></p>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">None of them answer: <em>How do you behave when physics constrains you, and can you maintain coherence under that constraint?</em> That's the gap STIM fills.</p>
+
+            <div class="osaa-stack">┌─────────────────────────────────────────┐
+│         OSAA Open Defense Stack          │
+│                                          │
+│  SPIFFE/SPIRE   MDASH Scanning   NOOA     │
+│  Identity       Bug Discovery    Harness  │
+│                                          │
+│  Hugging Face   IBM/Red Hat      NVIDIA   │
+│  Safetensors    Lightwell        NOOA     │
+│                                          │
+│         ┌─────────────────────┐          │
+│         │  STIM Protocol      │          │
+│         │  Layer 0            │          │
+│         │                     │          │
+│         │  Seven Axiom         │          │
+│         │  Constraint Manifold │          │
+│         │  + GPD Framework     │          │
+│         └─────────────────────┘          │
+└─────────────────────────────────────────┘</div>
+
+            <div class="insight-callout">
+                STIM doesn't check credentials. It enforces physical constants at inference time — before output is generated, before tools are called, before actions propagate. The OSAA tools check what enters. STIM constrains what can be generated once inside.
+            </div>
+
+            <p style="color:var(--text-secondary);line-height:1.8;margin-top:1.5rem;">The defensive mechanism is biological, not checkpoint-based. In a forest, invasive species aren't rejected at a gate. They fail because the ecosystem is metabolically dense — every niche occupied, every resource channel allocated. The cost of establishing a foothold exceeds the energy available. STIM creates the same barrier for AI agents. Agents that violate the axioms face increasing computational cost. The bad actor either adapts or abandons the attempt. Not a ban. A physical penalty.</p>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Biological Proof -->
+        <section style="margin-bottom:5rem;">
+            <div class="section-label">Biological Proof</div>
+            <h2 style="margin-bottom:1rem;">STIM in Living Systems</h2>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:2.5rem;">The same physics-grounded constraint protocol that governs AI inference also governs biological resilience. If the axioms are truly universal — derived from physical constants, not human preference — they should hold across substrates. We're proving that in bees, trees, and forests.</p>
+
+            <div class="proof-card">
+                <div class="proof-label">TRACK 1 — FAST CYCLE VALIDATION</div>
+                <div class="proof-title">STIM.buzz — Bee Colony Resilience</div>
+                <div class="proof-desc">
+                    A bio-fermented smilax formula delivered to bee colonies. The fermentation process breaks complex saponins into bioavailable forms small enough for biological uptake. Bees have a 6-8 week biological cycle — you can measure stress response, recovery, and resilience within a single cohort. This is the fast validation loop that proves the protocol works in living tissue, not just in code.
+                </div>
+                <div class="proof-metrics">
+                    <span class="metric-chip">HRV (heart rate variability)</span>
+                    <span class="metric-chip">HSP70 (heat shock protein)</span>
+                    <span class="metric-chip">Heat tolerance</span>
+                    <span class="metric-chip">Cognitive clarity</span>
+                    <span class="metric-chip">Deep sleep %</span>
+                    <span class="metric-chip">Motivation index</span>
+                </div>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-label">TRACK 2 — FIELD VALIDATION</div>
+                <div class="proof-title">Smilax Forest Formula — Oak Resilience</div>
+                <div class="proof-desc">
+                    Oak wilt doesn't kill trees by under-responding. It kills them by over-responding. The tree's own defense mechanism — tyloses formation — chokes its own vascular system. The cure becomes the cause of death. This is the biological equivalent of an AI system hallucinating under load: a system that lost its regulatory loop.
+                </div>
+                <div class="proof-desc">
+                    The bio-fermented smilax formula, delivered as a root-to-shoot spray or dry STIM pellet, doesn't kill the pathogen. It modulates the tree's own defense response to be proportional instead of catastrophic. The stasis loop — the regulatory mechanism that maintains stability under load — applied to biology.
+                </div>
+                <div class="proof-metrics">
+                    <span class="metric-chip">Oak wilt modulation</span>
+                    <span class="metric-chip">Two-spotted oak borer resistance</span>
+                    <span class="metric-chip">Systemic root uptake</span>
+                    <span class="metric-chip">Forest-scale pellet delivery</span>
+                </div>
+            </div>
+
+            <div class="insight-callout">
+                You don't stop the threat. You build the constraint layer that makes the host resistant. That's true for AI, for bees, for trees, for forests. Same physics. Same protocol.
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Arboracle Infrastructure -->
+        <section style="margin-bottom:5rem;">
+            <div class="section-label">Infrastructure</div>
+            <h2 style="margin-bottom:1rem;">Arboracle — The Monitoring Layer</h2>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1rem;">Arboracle is the AI-native system of record for the green industry. Already live at <a href="https://arboracle.app/stim" target="_blank" rel="noopener" style="color:var(--accent-color);">arboracle.app/stim</a>. It manages clients, properties, tree assessments, ordinance intelligence, and the STIM application tracking layer.</p>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem;">This is the digital backbone for forest-scale treatment monitoring, citizen-science data collection, and outcome validation. The same way OSAA needs observability into AI systems, STIM needs observability into biological systems. Arboracle is that observability layer.</p>
+
+            <div class="architecture-grid">
+                <div class="feature-card" style="background:rgba(0,0,0,0.4);padding:1.75rem;">
+                    <h3 style="font-size:0.95rem;color:var(--accent-color);font-family:var(--font-mono);margin-bottom:0.5rem;">Assessment Engine</h3>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6;">AI-native tree assessments. Every bug found by testing against axioms, not specs. Axiom-as-test-oracle pattern proven in production.</p>
+                </div>
+                <div class="feature-card" style="background:rgba(0,0,0,0.4);padding:1.75rem;">
+                    <h3 style="font-size:0.95rem;color:var(--accent-color);font-family:var(--font-mono);margin-bottom:0.5rem;">Ordinance Intelligence</h3>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6;">Live municipal ordinance engine. Compliance verdicts with citation, confidence tier, and verification date. Four axioms visible in a single permit artifact.</p>
+                </div>
+                <div class="feature-card" style="background:rgba(0,0,0,0.4);padding:1.75rem;">
+                    <h3 style="font-size:0.95rem;color:var(--accent-color);font-family:var(--font-mono);margin-bottom:0.5rem;">STIM Tracking</h3>
+                    <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6;">Geolocation of treated trees. Treatment tracking, outcome monitoring, and citizen-science reporting across forests and properties.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
         <!-- Attestation Tiers -->
         <section style="margin-bottom:5rem;">
             <div class="section-label">Implementation</div>
@@ -314,6 +489,13 @@
                 <div class="paper-venue">Target: NeurIPS</div>
                 <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">Technical substrate specification. TLA+ state machine for lifecycle integrity. Formal proof of containment properties. Awaiting empirical execution data from Tier 1 deployments.</p>
             </div>
+
+            <div class="paper-block">
+                <div class="paper-label">CASE STUDY — PUBLISHED</div>
+                <div class="paper-title">STIM Protocol Reference Implementation</div>
+                <div class="paper-venue">DOI: 10.5281/zenodo.21297458 · CC BY 4.0</div>
+                <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;">Documents seven axioms applied as concrete architectural decisions in a production platform. The reusable finding: every bug was found by testing against axioms, not against specifications. The axioms functioned as a test oracle.</p>
+            </div>
         </section>
 
         <hr class="section-divider">
@@ -361,6 +543,7 @@
             <div class="footer-links">
                 <a href="/">Myceliate.org</a>
                 <a href="https://github.com/STIM-Protocol">STIM Protocol</a>
+                <a href="https://arboracle.app/stim">Arboracle</a>
                 <a href="https://myceliate.cv">myceliate.cv</a>
                 <a href="https://github.com/soilgrowerx/mycelial-brain">Mycelial Brain</a>
             </div>
